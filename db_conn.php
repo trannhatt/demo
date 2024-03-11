@@ -1,9 +1,9 @@
 <?php
 
 #server name
-$sName = "localhost";
+$sName = "database-1.corloppcovr8.us-east-1.rds.amazonaws.com";
 #username
-$uName = "root";
+$uName = "3306";
 #password
 $pass = "";
 
