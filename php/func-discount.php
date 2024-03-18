@@ -1,7 +1,7 @@
 <?php
 #Get All discount function
 function get_all_discount($con){
-    $sql = "SELECT * FROM dis_program";
+    $sql = "SELECT * FROM Dis_program";
     $stmt = $con->prepare($sql);
     $stmt->execute();
 
@@ -15,7 +15,7 @@ function get_all_discount($con){
 }
 
 function get_dis_by_book($con, $bookid){
-    $sql = "SELECT * FROM dis_program LEFT JOIN applies ON dis_program.ID = applies.ID WHERE applies.BookID = $bookid";
+    $sql = "SELECT * FROM Dis_program LEFT JOIN Applies ON Dis_program.ID = Applies.ID WHERE Applies.BookID = $bookid";
     $stmt = $con->prepare($sql);
     $stmt->execute();
 

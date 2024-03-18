@@ -2,7 +2,7 @@
 
 #Get all Author function
 function get_all_author($con){
-    $sql = "SELECT DISTINCT Author FROM book";
+    $sql = "SELECT DISTINCT Author FROM Book";
     $stmt = $con->prepare($sql);
     $stmt->execute();
 
@@ -17,7 +17,7 @@ function get_all_author($con){
 
 #Get Author by ID function
 function get_author($con, $id){
-    $sql = "SELECT * FROM authors WHERE id=?";
+    $sql = "SELECT * FROM Authors WHERE Id=?";
     $stmt = $con->prepare($sql);
     $stmt->execute([$id]);
 

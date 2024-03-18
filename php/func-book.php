@@ -2,7 +2,7 @@
 
 #Get All books function
 function get_all_books($con){
-    $sql = "SELECT * FROM book ORDER BY BookID DESC";
+    $sql = "SELECT * FROM Book ORDER BY BookID DESC";
     $stmt = $con->prepare($sql);
     $stmt->execute();
 
@@ -18,7 +18,7 @@ function get_all_books($con){
 
 #Get book by ID function
 function get_book($con, $id){
-    $sql = "SELECT * FROM book WHERE BookID =?";
+    $sql = "SELECT * FROM Book WHERE BookID =?";
     $stmt = $con->prepare($sql);
     $stmt->execute([$id]);
 
@@ -36,7 +36,7 @@ function get_book($con, $id){
 function search_books($con, $key){
     # creating simple search algorithm :))
     $key = "%{$key}%";
-    $sql = "SELECT * FROM book 
+    $sql = "SELECT * FROM Book 
             WHERE Title LIKE ? 
             OR des LIKE ?
             OR Author LIKE ?";
@@ -54,9 +54,9 @@ function search_books($con, $key){
 
 # get_book_by_category
 function get_book_by_category($con, $id){
-    $sql = "SELECT * FROM BOOK 
+    $sql = "SELECT * FROM Book 
             WHERE BookID IN 
-            (SELECT BookID FROM belong JOIN categories ON belong.ID = categories.ID WHERE categories.ID=?)";
+            (SELECT BookID FROM Belong JOIN Categories ON Belong.ID = Categories.ID WHERE Categories.ID=?)";
     $stmt = $con->prepare($sql);
     $stmt->execute([$id]);
 
@@ -71,7 +71,7 @@ function get_book_by_category($con, $id){
 
 # get book by author name
 function get_book_by_author($con, $author){
-    $sql = "SELECT * FROM BOOK 
+    $sql = "SELECT * FROM Book
             WHERE Author =?";
     $stmt = $con->prepare($sql);
     $stmt->execute([$author]);
@@ -87,8 +87,8 @@ function get_book_by_author($con, $author){
 
 # get books in cart of user by username
 function get_book_cart($con, $username){
-    $sql = "SELECT * FROM BOOK
-            WHERE BOOKID IN (SELECT BOOKID FROM (CART JOIN CONTAIN ON CART.CODE=CONTAIN.CODE) JOIN CUSTOMER ON Cart.CustomerID=CUSTOMER.CustomerID WHERE username=?)";
+    $sql = "SELECT * FROM Book
+            WHERE BookID IN (SELECT BookID FROM (Cart JOIN Contain ON Cart.Code=Contain.Code) JOIN Customer ON Cart.CustomerID=Customer.CustomerID WHERE Username=?)";
     $stmt = $con->prepare($sql);
     $stmt->execute([$username]);
 

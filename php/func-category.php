@@ -1,7 +1,7 @@
 <?php 
 #Get all Categories function
 function get_all_categories($con){
-    $sql = "SELECT * FROM categories";
+    $sql = "SELECT * FROM Categories";
     $stmt = $con->prepare($sql);
     $stmt->execute();
 
@@ -16,7 +16,7 @@ function get_all_categories($con){
 
 #Get category by ID
 function get_category($con, $id){
-    $sql = "SELECT * FROM categories WHERE ID=?";
+    $sql = "SELECT * FROM Categories WHERE ID=?";
     $stmt = $con->prepare($sql);
     $stmt->execute([$id]);
 
@@ -31,7 +31,7 @@ function get_category($con, $id){
 
 #Get category by name category
 function get_category_by_name($con, $name){
-    $sql = "SELECT * FROM categories WHERE C_Name=?";
+    $sql = "SELECT * FROM Categories WHERE C_Name=?";
     $stmt = $con->prepare($sql);
     $stmt->execute([$name]);
 
@@ -46,9 +46,9 @@ function get_category_by_name($con, $name){
 
 #Get category by BookID
 function get_category_by_BookID($con, $id){
-    $sql = "SELECT categories.ID, categories.C_Name 
-            FROM categories JOIN belong on categories.ID = belong.ID 
-            WHERE belong.BookID=?";
+    $sql = "SELECT Categories.ID, Categories.C_Name 
+            FROM Categories JOIN Belong on Categories.ID = Belong.ID 
+            WHERE Belong.BookID=?";
     $stmt = $con->prepare($sql);
     $stmt->execute([$id]);
 
